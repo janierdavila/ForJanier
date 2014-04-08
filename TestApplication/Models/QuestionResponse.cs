@@ -17,7 +17,7 @@ namespace TestApplication.Models
         public string QuestionName;
 
         public string OpenResponse;
-       
+        
         public List<QuestionOptions> Options;
     }
 

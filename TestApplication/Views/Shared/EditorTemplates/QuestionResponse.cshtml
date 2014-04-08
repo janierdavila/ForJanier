@@ -32,14 +32,13 @@
             var id = Model.Options[i].OptionId;
             <div>
                 <label>@Model.Options[i].OptionDescription</label>
-                <input id="@id" type="radio" name="@name" value="" />
+                @Html.RadioButton(Model.Options[i].Selected.ToString(), new { @Model.Options[i].OptionId })
                 @Html.HiddenFor(m => m.Options[i].OptionDescription)
                 @Html.HiddenFor(m => m.Options[i].OptionName)
                 @Html.HiddenFor(m => m.Options[i].OptionId)
                 @Html.HiddenFor(m => m.Options[i].OptionType)
             </div>
-        }
-            
+        }    
     }
 }
 

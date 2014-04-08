@@ -160,7 +160,7 @@ namespace TestApplication.Controllers
         }
 
         [HttpPost]
-        public JsonResult Questionnaire([ModelBinder(typeof(QuestionResponseBinder))]List<QuestionResponse> questions, List<int> responses)
+        public JsonResult Questionnaire(List<QuestionResponse> questions, List<int> responses)
         {
             return Json(new
             {
