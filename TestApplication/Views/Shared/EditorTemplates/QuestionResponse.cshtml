@@ -1,0 +1,45 @@
+﻿@using System.Web.Mvc.Html
+@using TestApplication.Models
+@model  QuestionResponse
+
+@if (Model != null)
+{
+    <p><strong>@Model.QuestionName</strong></p>
+    @Html.HiddenFor(m => Model.QuestionName);
+    @Html.HiddenFor(m => Model.QuestionType)
+    @Html.HiddenFor(m => Model.QuestionCode)
+    @Html.HiddenFor(m => Model.QuestionId)
+
+    if (Model.QuestionType == "Checklist")
+    {
+        for (int i = 0; i < Model.Options.Count; i++)
+        {
+            <div>
+                <label>@Model.Options[i].OptionDescription</label>
+                @Html.CheckBoxFor(m => m.Options[i].Selected)
+                @Html.HiddenFor(m => m.Options[i].OptionDescription)
+                @Html.HiddenFor(m => m.Options[i].OptionName)
+                @Html.HiddenFor(m => m.Options[i].OptionId)
+                @Html.HiddenFor(m => m.Options[i].OptionType)
+            </div>
+        }
+    }
+    else if (Model.QuestionType == "RadioButton")
+    {
+        for (int i = 0; i < Model.Options.Count; i++)
+        {
+            var name = Model.QuestionId;
+            var id = Model.Options[i].OptionId;
+            <div>
+                <label>@Model.Options[i].OptionDescription</label>
+                <input id="@id" type="radio" name="@name" value="" />
+                @Html.HiddenFor(m => m.Options[i].OptionDescription)
+                @Html.HiddenFor(m => m.Options[i].OptionName)
+                @Html.HiddenFor(m => m.Options[i].OptionId)
+                @Html.HiddenFor(m => m.Options[i].OptionType)
+            </div>
+        }
+            
+    }
+}
+
